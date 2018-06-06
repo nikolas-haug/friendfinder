@@ -4,12 +4,176 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <!-- bootstrap css -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <!-- bootstrap js -->
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+    <!-- jquery -->
+    <script
+    src="https://code.jquery.com/jquery-3.3.1.min.js"
+    integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
+    crossorigin="anonymous"></script>
     <title>friend finder</title>
 </head>
 
 <body>
 
-    <h1>survey page!</h1>
+    <div class="container">
+
+        <div class="row">
+            <div class="col-md-12">
+                <div class="jumbotron">
+                    <h1>survey page</h1>
+                </div>
+            </div>
+        </div>
+
+        <div class="row">
+            <!-- TO DO make this two columns -->
+            <div class="col-md-12">
+                <h2>about you:</h2>
+                <h4>Name:</h4>
+                <input type="text" id="user-name" class="form-control" required>
+                <h2>Please add a photo of yourself:</h2>
+                <h4>photo URL/path</h4>
+                <input type="text" id="user-photo" class="form-control" required>
+            </div>
+        </div>
+
+        <hr>
+
+        <div class="row">
+            <div class="col-md-12">
+                
+                <form action="POST">
+
+                    <div class="form-group">
+                        <p>first question</p>
+                        <select class="form-control" id="quest1">
+                            <option>1</option>
+                            <option>2</option>
+                            <option>3</option>
+                            <option>4</option>
+                            <option>5</option>
+                        </select>
+                    </div>
+
+                    <div class="form-group">
+                        <p>second question</p>
+                        <select class="form-control" id="quest2">
+                            <option>1</option>
+                            <option>2</option>
+                            <option>3</option>
+                            <option>4</option>
+                            <option>5</option>
+                        </select>
+                    </div>
+
+                    <div class="form-group">
+                        <p>third question</p>
+                        <select class="form-control" id="quest3">
+                            <option>1</option>
+                            <option>2</option>
+                            <option>3</option>
+                            <option>4</option>
+                            <option>5</option>
+                        </select>
+                    </div>
+
+                    <div class="form-group">
+                        <p>fourth question</p>
+                        <select class="form-control" id="quest4">
+                            <option>1</option>
+                            <option>2</option>
+                            <option>3</option>
+                            <option>4</option>
+                            <option>5</option>
+                        </select>
+                    </div>
+
+                    <div class="form-group">
+                        <p>fifth question</p>
+                        <select class="form-control" id="quest5">
+                            <option>1</option>
+                            <option>2</option>
+                            <option>3</option>
+                            <option>4</option>
+                            <option>5</option>
+                        </select>
+                    </div>
+
+                    <div class="form-group">
+                        <p>sixth question</p>
+                        <select class="form-control" id="quest6">
+                            <option>1</option>
+                            <option>2</option>
+                            <option>3</option>
+                            <option>4</option>
+                            <option>5</option>
+                        </select>
+                    </div>
+
+                    <div class="form-group">
+                        <p>seventh question</p>
+                        <select class="form-control" id="quest7">
+                            <option>1</option>
+                            <option>2</option>
+                            <option>3</option>
+                            <option>4</option>
+                            <option>5</option>
+                        </select>
+                    </div>
+
+                    <div class="form-group">
+                        <p>eighth question</p>
+                        <select class="form-control" id="quest8">
+                            <option>1</option>
+                            <option>2</option>
+                            <option>3</option>
+                            <option>4</option>
+                            <option>5</option>
+                        </select>
+                    </div>
+
+                    <div class="form-group">
+                        <p>ninth question</p>
+                        <select class="form-control" id="quest9">
+                            <option>1</option>
+                            <option>2</option>
+                            <option>3</option>
+                            <option>4</option>
+                            <option>5</option>
+                        </select>
+                    </div>
+
+                    <div class="form-group">
+                        <p>tenth question</p>
+                        <select class="form-control" id="quest10">
+                            <option>1</option>
+                            <option>2</option>
+                            <option>3</option>
+                            <option>4</option>
+                            <option>5</option>
+                        </select>
+                    </div>
+
+                    <button class="btn btn-lg btn-success btn-block" id="submit-survey">Submit Answers</button>
+
+                </form>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-md-12">
+                <h1>footer</h1>
+            </div>
+        </div>
+
+    </div>
+
+    
 
 </body>
 </html>
