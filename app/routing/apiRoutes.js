@@ -13,6 +13,19 @@ module.exports = function(app) {
     // route to add to the json data array
     app.post("/api/friends", function(req, res) {
         var newFriend = req.body;
+
+        var test = {
+            name: "puppy",
+            job: "being a dog",
+            stateOfMind: "happy"
+        }
+
         friends.push(newFriend);
+        // console.log(newFriend);
+
+        // res.json(test);
+
+        res.json(friends);
+        
     });
 }

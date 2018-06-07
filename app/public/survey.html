@@ -52,110 +52,110 @@
                     <div class="form-group">
                         <p>first question</p>
                         <select class="form-control" id="quest1">
-                            <option>1</option>
-                            <option>2</option>
-                            <option>3</option>
-                            <option>4</option>
-                            <option>5</option>
+                            <option value="1">1</option>
+                            <option value="2">2</option>
+                            <option value="3">3</option>
+                            <option value="4">4</option>
+                            <option value="5">5</option>
                         </select>
                     </div>
 
                     <div class="form-group">
                         <p>second question</p>
                         <select class="form-control" id="quest2">
-                            <option>1</option>
-                            <option>2</option>
-                            <option>3</option>
-                            <option>4</option>
-                            <option>5</option>
+                            <option value="1">1</option>
+                            <option value="2">2</option>
+                            <option value="3">3</option>
+                            <option value="4">4</option>
+                            <option value="5">5</option>
                         </select>
                     </div>
 
                     <div class="form-group">
                         <p>third question</p>
                         <select class="form-control" id="quest3">
-                            <option>1</option>
-                            <option>2</option>
-                            <option>3</option>
-                            <option>4</option>
-                            <option>5</option>
+                            <option value="1">1</option>
+                            <option value="2">2</option>
+                            <option value="3">3</option>
+                            <option value="4">4</option>
+                            <option value="5">5</option>
                         </select>
                     </div>
 
                     <div class="form-group">
                         <p>fourth question</p>
                         <select class="form-control" id="quest4">
-                            <option>1</option>
-                            <option>2</option>
-                            <option>3</option>
-                            <option>4</option>
-                            <option>5</option>
+                            <option value="1">1</option>
+                            <option value="2">2</option>
+                            <option value="3">3</option>
+                            <option value="4">4</option>
+                            <option value="5">5</option>
                         </select>
                     </div>
 
                     <div class="form-group">
                         <p>fifth question</p>
                         <select class="form-control" id="quest5">
-                            <option>1</option>
-                            <option>2</option>
-                            <option>3</option>
-                            <option>4</option>
-                            <option>5</option>
+                            <option value="1">1</option>
+                            <option value="2">2</option>
+                            <option value="3">3</option>
+                            <option value="4">4</option>
+                            <option value="5">5</option>
                         </select>
                     </div>
 
                     <div class="form-group">
                         <p>sixth question</p>
                         <select class="form-control" id="quest6">
-                            <option>1</option>
-                            <option>2</option>
-                            <option>3</option>
-                            <option>4</option>
-                            <option>5</option>
+                            <option value="1">1</option>
+                            <option value="2">2</option>
+                            <option value="3">3</option>
+                            <option value="4">4</option>
+                            <option value="5">5</option>
                         </select>
                     </div>
 
                     <div class="form-group">
                         <p>seventh question</p>
                         <select class="form-control" id="quest7">
-                            <option>1</option>
-                            <option>2</option>
-                            <option>3</option>
-                            <option>4</option>
-                            <option>5</option>
+                            <option value="1">1</option>
+                            <option value="2">2</option>
+                            <option value="3">3</option>
+                            <option value="4">4</option>
+                            <option value="5">5</option>
                         </select>
                     </div>
 
                     <div class="form-group">
                         <p>eighth question</p>
                         <select class="form-control" id="quest8">
-                            <option>1</option>
-                            <option>2</option>
-                            <option>3</option>
-                            <option>4</option>
-                            <option>5</option>
+                            <option value="1">1</option>
+                            <option value="2">2</option>
+                            <option value="3">3</option>
+                            <option value="4">4</option>
+                            <option value="5">5</option>
                         </select>
                     </div>
 
                     <div class="form-group">
                         <p>ninth question</p>
                         <select class="form-control" id="quest9">
-                            <option>1</option>
-                            <option>2</option>
-                            <option>3</option>
-                            <option>4</option>
-                            <option>5</option>
+                            <option value="1">1</option>
+                            <option value="2">2</option>
+                            <option value="3">3</option>
+                            <option value="4">4</option>
+                            <option value="5">5</option>
                         </select>
                     </div>
 
                     <div class="form-group">
                         <p>tenth question</p>
                         <select class="form-control" id="quest10">
-                            <option>1</option>
-                            <option>2</option>
-                            <option>3</option>
-                            <option>4</option>
-                            <option>5</option>
+                            <option value="1">1</option>
+                            <option value="2">2</option>
+                            <option value="3">3</option>
+                            <option value="4">4</option>
+                            <option value="5">5</option>
                         </select>
                     </div>
 
@@ -173,6 +173,42 @@
 
     </div>
 
+    <script>
+    
+        $("document").ready(function() {
+
+            $("#submit-survey").on("click", function(evt) {
+                evt.preventDefault();
+                
+                var newFriend = {
+                    name: $("#user-name").val().trim(),
+                    photo: $("#user-photo").val().trim(),
+                    surveyAnswers: [
+                        parseInt($("#quest1").val()),
+                        parseInt($("#quest2").val()),
+                        parseInt($("#quest3").val()),
+                        parseInt($("#quest4").val()),
+                        parseInt($("#quest5").val()),
+                        parseInt($("#quest6").val()),
+                        parseInt($("#quest7").val()),
+                        parseInt($("#quest8").val()),
+                        parseInt($("#quest9").val()),
+                        parseInt($("#quest10").val())
+                    ]
+                }
+                console.log(newFriend);
+                $.post("/api/friends", newFriend)
+                    .then(function(data) {
+                        for(var i = 0; i < data.length; i++) {
+                            console.log(data[i].name);
+                        }
+                    });
+                    // alert("message");
+            });
+
+        });
+
+    </script>
     
 
 </body>
