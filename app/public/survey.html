@@ -179,31 +179,41 @@
 
             $("#submit-survey").on("click", function(evt) {
                 evt.preventDefault();
+
+                //Makes an array of the values of the selected options
+                var newFriendscoresArray = [];
+                $('.form-control option:selected').each(function() {
+                    //convert the number strings to numbers
+                    newFriendscoresArray.push(parseInt($(this).val()));
+                });
                 
                 var newFriend = {
                     name: $("#user-name").val().trim(),
                     photo: $("#user-photo").val().trim(),
-                    surveyAnswers: [
-                        parseInt($("#quest1").val()),
-                        parseInt($("#quest2").val()),
-                        parseInt($("#quest3").val()),
-                        parseInt($("#quest4").val()),
-                        parseInt($("#quest5").val()),
-                        parseInt($("#quest6").val()),
-                        parseInt($("#quest7").val()),
-                        parseInt($("#quest8").val()),
-                        parseInt($("#quest9").val()),
-                        parseInt($("#quest10").val())
-                    ]
+                    scores: newFriendscoresArray
+                    // scores: [
+                    //     parseInt($("#quest1").val()),
+                    //     parseInt($("#quest2").val()),
+                    //     parseInt($("#quest3").val()),
+                    //     parseInt($("#quest4").val()),
+                    //     parseInt($("#quest5").val()),
+                    //     parseInt($("#quest6").val()),
+                    //     parseInt($("#quest7").val()),
+                    //     parseInt($("#quest8").val()),
+                    //     parseInt($("#quest9").val()),
+                    //     parseInt($("#quest10").val())
+                    // ]
                 }
                 console.log(newFriend);
+                //sending post request as the newFriend object
                 $.post("/api/friends", newFriend)
                     .then(function(data) {
-                        for(var i = 0; i < data.length; i++) {
-                            console.log(data[i].name);
-                        }
+                        //receiving the data back from the post route to change DOM
+                        console.log(data.name);
+                        alert("message");
+                        console.log(data);
                     });
-                    // alert("message");
+                    // alert("message" + data[0].name);
             });
 
         });

@@ -4,21 +4,21 @@ var friends = [
     {
         name: "spongebob",
         scores: [
-            2, 3, 4, 5 ,6 ,7, 8, 9, 1, 2
+            1, 1, 1, 1, 5 ,3, 4, 1, 1, 2
         ],
         photo: "photo"
     },
     {
         name: "patrick",
         scores: [
-            2, 3, 4, 5 ,6 ,7, 8, 9, 1, 2
+            2, 3, 4, 5, 4, 4, 1, 2, 1, 4
         ],
         photo: "photo"
     },
     {
         name: "sandy",
         scores: [
-            2, 3, 4, 5 ,6 ,7, 8, 9, 1, 2
+            2, 1, 3, 5 ,3 ,1, 3, 4, 5, 4
         ],
         photo: "photo"
     }
