@@ -6,7 +6,7 @@ var friends = [
         scores: [
             1, 1, 1, 1, 5 ,3, 4, 1, 1, 2
         ],
-        photo: "photo"
+        photo: "https://pmcvariety.files.wordpress.com/2016/05/spongebob-nickelodeon.jpg?w=1000&h=563&crop=1"
     },
     {
         name: "patrick",

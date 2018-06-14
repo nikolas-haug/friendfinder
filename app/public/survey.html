@@ -189,7 +189,8 @@
                     </div>
                     <div class="modal-footer">
                         <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                        <button type="button" class="btn btn-primary">Save changes</button>
+                        <!-- TO DO - add a button to email the new friend -->
+                        <!-- <button type="button" class="btn btn-primary">Email your new friend</button> -->
                     </div>
                 </div>
             </div>
@@ -245,9 +246,12 @@
                         
                         var bestFriendName = $("<h1>").text(data.name);
 
+                        var bestFriendImg = $("<img class='img-fluid'>").attr("src", data.photo);
+
                         $("#friendModal").modal("toggle");
 
                         $(".modal-body").append(bestFriendName);
+                        $(".modal-body").append(bestFriendImg);
 
                     });
                     // alert("message" + data[0].name);
