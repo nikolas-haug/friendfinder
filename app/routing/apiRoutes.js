@@ -43,6 +43,6 @@ module.exports = function(app) {
         res.json(bestFriend);
         //add new friend to friends array
         friends.push(currentUser);
-        console.log(bestFriend);
+        // console.log(bestFriend);
     });
 }

@@ -6,13 +6,14 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <!-- bootstrap css -->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
-
-     <!-- * * * CHECK THIS * * *  -->
+    <!-- custom css -->
+    <link rel="stylesheet" href="css/style.css">
+    <!-- google fonts -->
+    <link href="https://fonts.googleapis.com/css?family=Roboto+Slab" rel="stylesheet">
     <!-- jquery -->
     <script src="https://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
     <!-- bootstrap js -->
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js" integrity="sha384-smHYKdLADwkXOn1EmN1qk/HfnUcbVRZyYmZ4qpPea6sjB/pTJ0euyQp0Mk8ck+5T" crossorigin="anonymous"></script>
-    
     <title>friend finder</title>
 </head>
 
@@ -20,30 +21,42 @@
 
     <div class="container">
 
-        <div class="row">
+        <div class="row pt-3">
             <div class="col-md-12">
-                <div class="jumbotron">
+                <div class="jumbotron p-4">
                     <h1>survey page</h1>
+                    <p>answer the ten questions below and be matched with your new best friend!</p>
+                    <hr>
+                    <ul>
+                        <li><a href="/">home page</a></li>
+                        <li><a href="/api/friends">api routes</a></li>
+                    </ul>
                 </div>
             </div>
         </div>
 
         <div class="row">
-            <!-- TO DO make this two columns -->
+
             <div class="col-md-12">
                 <h3>about you:</h3>
-                <h4>Name:</h4>
+            </div>
+            <!-- TO DO make this two columns -->
+            <div class="col-md-6 col-sm-12">
+                <h3>Please enter your name:</h3>
+                <h5>Name:</h5>
                 <input type="text" id="user-name" class="form-control" required>
+            </div>
+            <div class="col-md-6 col-sm-12">
                 <h3>Please add a photo of yourself:</h3>
-                <h4>photo URL/path</h4>
+                <h5>photo URL/path</h5>
                 <input type="text" id="user-photo" class="form-control" required>
             </div>
         </div>
 
         <hr>
 
-        <div class="row">
-            <div class="col-md-12">
+        <div class="row justify-content-center">
+            <div class="col-md-5">
 
                 <h2>Please rate the following questions:</h2>
                 
@@ -159,23 +172,14 @@
                         </select>
                     </div>
 
-                    <button class="btn btn-lg btn-success btn-block" id="submit-survey">Submit Answers</button>
+                    <button class="btn btn-lg btn-success btn-block mt-4" id="submit-survey">Submit Answers</button>
 
                 </form>
             </div>
         </div>
 
-        <div class="row">
-            <div class="col-md-12">
-                <h1>footer</h1>
-            </div>
-        </div>
+        
 
-        <!-- Button trigger modal for TESTING -->
-            <!-- <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#friendModal">
-                Launch demo modal
-            </button> -->
-  
         <!-- Modal -->
         <div class="modal fade" id="friendModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
             <div class="modal-dialog" role="document">
@@ -186,6 +190,7 @@
                         </button>
                     </div>
                     <div class="modal-body text-center">
+                        <h3>Your new best friend is:</h3>
                         <!-- generate best friend found content here -->
                     </div>
                     <div class="modal-footer">
@@ -195,6 +200,10 @@
                     </div>
                 </div>
             </div>
+        </div>
+
+        <div class="row footer">
+            <div class="col-md-12"></div>
         </div>
 
     </div>
@@ -224,16 +233,13 @@
                     photo: $("#user-photo").val().trim(),
                     scores: newFriendscoresArray
                 }
-                console.log(newFriend);
+                // console.log(newFriend);
 
                 $("#friendModal").modal("show");
                 //sending post request as the newFriend object
                 $.post("/api/friends", newFriend)
                     .then(function(data) {
                         //receiving the data back from the post route to change DOM
-                        console.log(data.name);
-                        console.log(data);
-
                         //show the modal with the matched best friend data
                         var bestFriendName = $("<h1>").text(data.name);
                         var bestFriendImg = $("<img class='img-fluid'>").attr("src", data.photo);
@@ -241,7 +247,7 @@
                         $("#friendModal").modal("toggle");
                         $(".modal-body").append(bestFriendName);
                         $(".modal-body").append(bestFriendImg);
-
+                        //call function to clear form and scroll to top of page
                         clearForm();
                     });
             });
@@ -250,8 +256,5 @@
 
     </script>
 
-     <!-- * * * CHECK THESE TAGS AS THEY CORRESPOND TO THE HEAD TAGS * * *  -->
-    
-    
 </body>
 </html>
