@@ -8,8 +8,10 @@
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
 
      <!-- * * * CHECK THIS * * *  -->
+    <!-- jquery -->
+    <script src="https://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
     <!-- bootstrap js -->
-    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js" integrity="sha384-smHYKdLADwkXOn1EmN1qk/HfnUcbVRZyYmZ4qpPea6sjB/pTJ0euyQp0Mk8ck+5T" crossorigin="anonymous"></script>
     
     <title>friend finder</title>
 </head>
@@ -179,14 +181,11 @@
             <div class="modal-dialog" role="document">
                 <div class="modal-content">
                     <div class="modal-header">
-                        <!-- <h2></h2> -->
-                    <!-- <div id="friend-name"></div> -->
-                    <!-- <h5 class="modal-title" id="exampleModalLabel"></h5> -->
-                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                        <span aria-hidden="true">&times;</span>
-                    </button>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
                     </div>
-                    <div class="modal-body">
+                    <div class="modal-body text-center">
                         <!-- generate best friend found content here -->
                     </div>
                     <div class="modal-footer">
@@ -204,37 +203,30 @@
     
         $("document").ready(function() {
 
+            //function to clear the form after submission
+            function clearForm() {
+                $('#user-name, #user-photo').val("");
+                $('.form-control').prop('selectedIndex',0);
+                $("html, body").animate({ scrollTop: 0 }, "slow");
+            }
+
             $("#submit-survey").on("click", function(evt) {
                 evt.preventDefault();
-
                 //Makes an array of the values of the selected options
                 var newFriendscoresArray = [];
                 $('.form-control option:selected').each(function() {
                     //convert the number strings to numbers
                     newFriendscoresArray.push(parseInt($(this).val()));
                 });
-                
+                //creates the new freiend variable object
                 var newFriend = {
                     name: $("#user-name").val().trim(),
                     photo: $("#user-photo").val().trim(),
                     scores: newFriendscoresArray
-                    // scores: [
-                    //     parseInt($("#quest1").val()),
-                    //     parseInt($("#quest2").val()),
-                    //     parseInt($("#quest3").val()),
-                    //     parseInt($("#quest4").val()),
-                    //     parseInt($("#quest5").val()),
-                    //     parseInt($("#quest6").val()),
-                    //     parseInt($("#quest7").val()),
-                    //     parseInt($("#quest8").val()),
-                    //     parseInt($("#quest9").val()),
-                    //     parseInt($("#quest10").val())
-                    // ]
                 }
                 console.log(newFriend);
 
                 $("#friendModal").modal("show");
-
                 //sending post request as the newFriend object
                 $.post("/api/friends", newFriend)
                     .then(function(data) {
@@ -242,21 +234,16 @@
                         console.log(data.name);
                         console.log(data);
 
-                        console.log(bestFriendName);
-
-                        //show the modal
-                        
+                        //show the modal with the matched best friend data
                         var bestFriendName = $("<h1>").text(data.name);
-
                         var bestFriendImg = $("<img class='img-fluid'>").attr("src", data.photo);
-
+                        //append the dynamically created elements to the DOM
                         $("#friendModal").modal("toggle");
-
                         $(".modal-body").append(bestFriendName);
                         $(".modal-body").append(bestFriendImg);
 
+                        clearForm();
                     });
-                    // alert("message" + data[0].name);
             });
 
         });
@@ -264,10 +251,7 @@
     </script>
 
      <!-- * * * CHECK THESE TAGS AS THEY CORRESPOND TO THE HEAD TAGS * * *  -->
-    <!-- jquery -->
-    <script src="https://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
-    <!-- bootstrap js -->
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js" integrity="sha384-smHYKdLADwkXOn1EmN1qk/HfnUcbVRZyYmZ4qpPea6sjB/pTJ0euyQp0Mk8ck+5T" crossorigin="anonymous"></script>
+    
     
 </body>
 </html>

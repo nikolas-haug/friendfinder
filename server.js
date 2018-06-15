@@ -10,6 +10,9 @@ var PORT = process.env.PORT || 3030;
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
 
+//sets up the static files served
+app.use(express.static("app/public"));
+
 //import the html and api routes from other js files
 require("./app/routing/htmlRoutes.js")(app);
 require("./app/routing/apiRoutes.js")(app);
